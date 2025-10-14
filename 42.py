@@ -12,6 +12,7 @@ def trap(height: list[int]) -> int:
         left_max, right_max = max(left_max, height[left]), max(right_max, height[right])
 
         # 더 높은 쪽을 향해 투 포인터 이동
+        # 높은 쪽의 포인터는 현재 위치를 그대로 두고 낮은 쪽의 포인터를 이동
         if left_max <= right_max:
             volume += left_max - height[left]
             left += 1
