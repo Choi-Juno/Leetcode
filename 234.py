@@ -45,3 +45,19 @@ def isPalindrome2(head: Optional[ListNode]) -> bool:
         if q.popleft() != q.pop():
             return False
     return True
+
+
+# 3. 런너를 이용한 풀이
+def isPalindrome3(head: Optional[ListNode]) -> bool:
+    rev = None
+    slow = fast = head
+    while fast and fast.next:
+        fast = fast.next.next
+        rev, rev.next, slow = slow, rev, slow.next
+    if fast and slow:
+        slow = slow.next
+
+    # 팰린드롬 여부 확인
+    while rev and slow and rev.val == slow.val:
+        slow, rev = slow.next, rev.next
+    return not rev
